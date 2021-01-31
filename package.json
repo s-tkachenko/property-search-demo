@@ -7,9 +7,9 @@
     "build": "next build",
     "start": "next start",
     "prettier": "prettier  --write **/*.{ts,tsx,js}",
-    "eslint": "eslint --fix '**/*.{ts,tsx,js}'",
+    "eslint": "eslint --fix **/*.{ts,tsx,js}",
     "lint:ts": "yarn run prettier && yarn run eslint",
-    "lint:css": "stylelint --fix '**/*.css'",
+    "lint:css": "stylelint --fix **/*.css",
     "lint:types": "tsc -p . --noEmit"
   },
   "dependencies": {
