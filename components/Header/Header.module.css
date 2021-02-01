@@ -1,13 +1,21 @@
 .container {
-  display: block;
+  display: flex;
+  justify-content: center;
   width: 100%;
   border-bottom: 1px solid #eaeaea;
 }
 
 .content {
-  display: grid;
-  grid-template-columns: 1fr max-content;
+  display: flex;
+  flex-grow: 1;
   align-items: center;
-  padding: 24px 96px;
+  max-width: 900px;
+  padding: 24px 0;
   column-gap: 24px;
+}
+
+.navigation {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
 }

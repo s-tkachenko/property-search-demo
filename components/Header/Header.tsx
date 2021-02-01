@@ -6,10 +6,8 @@ export default function Header() {
   return (
     <header className={styles.container}>
       <div className={styles.content}>
-        <div>
-          <Logo />
-        </div>
-        <div>
+        <Logo />
+        <div className={styles.navigation}>
           <ButtonFavorites />
         </div>
       </div>

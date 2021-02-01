@@ -18,3 +18,10 @@ a {
 * {
   box-sizing: border-box;
 }
+
+input[type="search"] {
+  -webkit-appearance: searchfield;
+}
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
