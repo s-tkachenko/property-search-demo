@@ -1,0 +1,28 @@
+.container {
+  background: #dfdfdf;
+  border-radius: 10px;
+  padding: 0.8rem 1.2rem;
+  color: #ffffff;
+  border: 4px solid#eeeeee;
+  display: flex;
+  align-items: center;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  transition: 0.2s;
+}
+
+.container:hover {
+  color: #ffebea;
+  background: #fc6c7d;
+  border: 4px solid#fddfdd;
+}
+
+.icon {
+  background-image: url('./icon-star.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 20px;
+  height: 20px;
+  margin-right: 0.8rem;
+}
