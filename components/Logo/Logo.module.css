@@ -1,7 +1,7 @@
 .container {
   display: inline-flex;
-  justify-content: flex-start;
   align-items: center;
+  justify-content: flex-start;
   margin: 5px;
   cursor: pointer;
 }
@@ -10,8 +10,8 @@
   width: 50px;
   height: 50px;
   background:#00b761 url('./logo.svg');
-  background-position: center;
   background-repeat: no-repeat;
+  background-position: center;
   background-size: 50%;
   border-radius: 30%;
   transition: 0.3s;
@@ -23,6 +23,6 @@
 
 .name {
   margin-left: 10px;
-  font-size: 1.5rem;
   color: #363636;
+  font-size: 1.5rem;
 }

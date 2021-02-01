@@ -11,8 +11,8 @@
 
 .title {
   margin: 0;
-  line-height: 1.15;
   font-size: 4rem;
+  line-height: 1.15;
 }
 
 .title,
@@ -21,34 +21,34 @@
 }
 
 .description {
-  line-height: 1.5;
   font-size: 1.5rem;
+  line-height: 1.5;
 }
 
 .code {
-  background: #fafafa;
-  border-radius: 5px;
   padding: 0.75rem;
   font-size: 1.1rem;
   font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
     Bitstream Vera Sans Mono, Courier New, monospace;
+  background: #fafafa;
+  border-radius: 5px;
 }
 
 .grid {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
   max-width: 800px;
   margin-top: 3rem;
 }
 
 .card {
-  margin: 1rem;
   flex-basis: 45%;
+  margin: 1rem;
   padding: 1.5rem;
-  text-align: left;
   color: inherit;
+  text-align: left;
   text-decoration: none;
   border: 1px solid #eaeaea;
   border-radius: 10px;
@@ -79,7 +79,7 @@
 
 @media (max-width: 600px) {
   .grid {
-    width: 100%;
     flex-direction: column;
+    width: 100%;
   }
 }
