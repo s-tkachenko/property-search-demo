@@ -8,7 +8,7 @@ export default function ForSale() {
   const [response, setResponse] = useState('Loading..');
 
   useEffect(() => {
-    fetch('/api/hello')
+    fetch(`/api/search/${location}`)
       .then((response) => response.json())
       .then((data) => {
         setResponse(data);
