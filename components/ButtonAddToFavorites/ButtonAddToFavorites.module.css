@@ -1,0 +1,9 @@
+.button {
+  width: 40px;
+  height: 40px;
+  background: #fc6c7d url('./icon-bookmark.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 35%;
+  border-radius: 50%;
+}

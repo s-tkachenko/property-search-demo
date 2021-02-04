@@ -1,17 +1,21 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
+import ApartmentCard from '../../components/ApartmentCard/ApartmentCard';
+import ContentGrid from '../../components/ContentGrid/ContentGrid';
+import { Apartment } from '../../types/apartment';
+
 export default function ForSale() {
   const router = useRouter();
   const { location } = router.query;
 
-  const [response, setResponse] = useState('Loading..');
+  const [apartments, setApartments] = useState([]);
 
   useEffect(() => {
     fetch(`/api/search/${location}`)
       .then((response) => response.json())
       .then((data) => {
-        setResponse(data);
+        setApartments(data);
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -19,9 +23,10 @@ export default function ForSale() {
   }, [location]);
 
   return (
-    <div>
-      {location}
-      {JSON.stringify(response, null, 2)}
-    </div>
+    <ContentGrid>
+      {apartments.map((item: Apartment) => (
+        <ApartmentCard key={item.id} item={item} />
+      ))}
+    </ContentGrid>
   );
 }

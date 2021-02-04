@@ -13,9 +13,9 @@ export default function Header() {
             <Logo />
           </a>
         </Link>
-        <div className={styles.navigation}>
+        <nav className={styles.navigation}>
           <ButtonFavorites />
-        </div>
+        </nav>
       </div>
     </header>
   );

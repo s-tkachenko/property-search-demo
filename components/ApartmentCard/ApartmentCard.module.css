@@ -1,0 +1,72 @@
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: 1.5rem;
+  transition: 0.3s;
+}
+
+.container:hover {
+  box-shadow: 0px 10px 13px -7px #d8d8d8;
+}
+
+.imageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 250px;
+  overflow: hidden;
+  border-radius: 1.5rem;
+}
+
+.imageContainer img {
+  width: 100%;
+}
+
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+  padding: 1.5rem;
+}
+
+.street {
+  font-weight: 500;
+}
+
+.additionalInfo {
+  padding: 0.5rem 0;
+  color: #b3babf;
+  font-size: 0.8rem;
+}
+
+.city,.bedroom {
+  padding-left: 1.1rem;
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: contain;
+}
+
+.city {
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  background-image: url('./icon-map.svg');
+}
+
+.bedroom {
+  background-image: url('./icon-bed.svg');
+}
+
+.price {
+  color: #169dff;
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+.favoritesButton {
+  position: absolute;
+  top: 230px;
+  right: 1rem;
+}
