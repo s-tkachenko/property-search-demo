@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
@@ -9,13 +10,15 @@ export default function ForSale() {
   const router = useRouter();
   const { location } = router.query;
 
-  const [apartments, setApartments] = useState([]);
+  const [apartments, setApartments] = useState<Apartment[]>([]);
 
   useEffect(() => {
     fetch(`/api/search/${location}`)
       .then((response) => response.json())
       .then((data) => {
-        setApartments(data);
+        const { apartments } = data;
+        const apartmentsArr: Apartment[] = Array.isArray(apartments) ? apartments : [];
+        setApartments(apartmentsArr);
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -24,8 +27,12 @@ export default function ForSale() {
 
   return (
     <ContentGrid>
-      {apartments.map((item: Apartment) => (
-        <ApartmentCard key={item.id} item={item} />
+      {apartments.map((apartment: Apartment) => (
+        <Link href={`/apartments/${apartment.id}`} key={apartment.id}>
+          <a>
+            <ApartmentCard apartment={apartment} />
+          </a>
+        </Link>
       ))}
     </ContentGrid>
   );

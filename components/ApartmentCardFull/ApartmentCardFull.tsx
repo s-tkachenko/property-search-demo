@@ -1,20 +1,17 @@
 import { Apartment } from '../../types/apartment';
+import AgentContactInfo from '../AgentContactInfo/AgentContactInfo';
 import ApartmentDescription from '../ApartmentDescription/ApartmentDescription';
-import ButtonAddToFavorites from '../ButtonAddToFavorites/ButtonAddToFavorites';
-import styles from './ApartmentCard.module.css';
+import styles from './ApartmentCardFull.module.css';
 
 type Props = {
   apartment: Apartment;
 };
 
-export default function ApartmentCard({ apartment }: Props) {
+export default function ApartmentCardFull({ apartment }: Props) {
   return (
-    <section className={styles.container}>
+    <div className={styles.container}>
       <div className={styles.image}>
         <img src={apartment.imageUrl} alt={apartment.street} />
-        <div className={styles.favoritesButton}>
-          <ButtonAddToFavorites />
-        </div>
       </div>
       <div className={styles.description}>
         <ApartmentDescription
@@ -23,7 +20,10 @@ export default function ApartmentCard({ apartment }: Props) {
           bedroom={apartment.bedroom}
           price={apartment.priceTag}
         />
+        <div className={styles.agent}>
+          <AgentContactInfo name={apartment.agent} tel={apartment.phone} />
+        </div>
       </div>
-    </section>
+    </div>
   );
 }

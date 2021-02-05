@@ -3,8 +3,8 @@ export type Apartment = {
   city: string;
   street: string;
   bedroom: number;
-  price: number;
-  image: number;
+  priceTag: string;
+  imageUrl: string;
   phone: string;
   agent: string;
 };
