@@ -1,23 +1,30 @@
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
-
 import ApartmentCardFull from '../../components/ApartmentCardFull/ApartmentCardFull';
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
+import { getAllApartmentIds, getApartmentById } from '../../services/api/apartments';
 import { Apartment } from '../../types/apartment';
 
-export default function ApartmentDetails() {
-  const router = useRouter();
-  const { id } = router.query;
+type Props = {
+  apartment: Apartment;
+};
 
-  const [apartment, setApartment] = useState<Apartment>();
+export default function ApartmentDetails({ apartment }: Props) {
+  return apartment ? <ApartmentCardFull apartment={apartment} /> : <ErrorMessage />;
+}
 
-  useEffect(() => {
-    fetch(`/api/apartments/${id}`)
-      .then((response) => response.json())
-      .then((data) => setApartment(data?.apartment))
-      .catch((error) => {
-        console.error('Error:', error);
-      });
-  }, [id]);
+export async function getStaticPaths() {
+  const paths = await getAllApartmentIds();
 
-  return <>{apartment && <ApartmentCardFull apartment={apartment} />}</>;
+  return { paths, fallback: false };
+}
+
+type StaticProps = {
+  params: {
+    id: string;
+  };
+};
+
+export async function getStaticProps({ params }: StaticProps) {
+  const apartment = await getApartmentById(params.id);
+
+  return { props: { apartment } };
 }

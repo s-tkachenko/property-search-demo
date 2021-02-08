@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import { getFullPrice, getImageUrl } from '../../../services/mock-helper';
+import { getFullPrice, getImageUrl } from '../../../services/api/helpers';
 import { fakeDelay } from '../../../services/utils';
 import data from '../mock-data.json';
 
