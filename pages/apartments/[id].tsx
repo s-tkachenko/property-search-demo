@@ -1,5 +1,7 @@
 import ApartmentCardFull from '../../components/ApartmentCardFull/ApartmentCardFull';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
+import PageHead from '../../components/PageHead/PageHead';
+import TITLE from '../../constants/titles';
 import { getAllApartmentIds, getApartmentById } from '../../services/api/apartments';
 import { Apartment } from '../../types/apartment';
 
@@ -8,7 +10,12 @@ type Props = {
 };
 
 export default function ApartmentDetails({ apartment }: Props) {
-  return apartment ? <ApartmentCardFull apartment={apartment} /> : <ErrorMessage />;
+  return (
+    <>
+      <PageHead title={TITLE.APARTMENT_DETAILS(apartment.street, apartment.city)} />
+      {apartment ? <ApartmentCardFull apartment={apartment} /> : <ErrorMessage />}
+    </>
+  );
 }
 
 export async function getStaticPaths() {
