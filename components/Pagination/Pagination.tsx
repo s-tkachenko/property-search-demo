@@ -8,13 +8,19 @@ type Props = {
   baseUrl: string;
 };
 
+function getPaginationRange(current: number, total: number, range = 6, min = 1) {
+  const length = total < range ? total : range;
+  const startHalfRange = current - Math.floor(length / 2);
+  const startSafeHalfRange = Math.max(startHalfRange, min);
+  const startSafeTotal = min + total - length;
+  const start = Math.min(startSafeHalfRange, startSafeTotal);
+
+  return Array.from({ length }, (v, i) => start + i);
+}
+
 export default function Pagination({ currentPage, totalPages, baseUrl }: Props) {
   const router = useRouter();
-
-  const pages: number[] = [];
-  for (let i = 1; i <= totalPages; i++) {
-    pages.push(i);
-  }
+  const indexes = getPaginationRange(currentPage, totalPages);
 
   const redirectToPage = (page: number | string) =>
     router.push({
@@ -40,7 +46,7 @@ export default function Pagination({ currentPage, totalPages, baseUrl }: Props) 
       <button className="button" onClick={handleOpenPrevious} disabled={isPreviousDisabled}>
         &larr;
       </button>
-      {pages.map((index) => (
+      {indexes.map((index) => (
         <button
           className="button"
           onClick={handleOpenByIndex}
