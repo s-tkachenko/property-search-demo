@@ -1,16 +1,25 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import { getFullPrice, getImageUrl } from '../../../services/api/helpers';
+import {
+  getFullPrice,
+  getImageUrl,
+  getRouterParamIntValue,
+  getRouterParamStringValue
+} from '../../../services/api/helpers';
 import { fakeDelay } from '../../../services/utils';
 import data from '../mock-data.json';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
+  const DEFAULT = {
+    PAGE: 1,
+    LIMIT: 10
+  };
   const {
-    query: { location }
+    query: { location, page }
   } = req;
-  const queryLocation = Array.isArray(location) ? location[0] : location;
-  const query = queryLocation.toLowerCase();
-  const filtered = data.filter((el) => el?.city?.toLowerCase().includes(query));
+  const currentPage = getRouterParamIntValue(page) || DEFAULT.PAGE;
+  const queryLocation = getRouterParamStringValue(location).toLowerCase();
+  const filtered = data.filter((el) => el?.city?.toLowerCase().includes(queryLocation));
   const apartments = filtered.map((el) => ({
     id: el.id,
     city: el.city,
@@ -20,10 +29,20 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     imageUrl: getImageUrl(el.image)
   }));
 
+  const limitPerPage = DEFAULT.LIMIT;
+  const totalElements = apartments.length;
+  const totalPages = Math.ceil(totalElements / limitPerPage);
+  const paginationStart = limitPerPage * (currentPage - 1);
+  const paginationEnd = paginationStart + limitPerPage;
+  const elementsList = apartments.slice(paginationStart, paginationEnd);
+
   await fakeDelay();
 
   res.statusCode = 200;
   res.json({
-    apartments
+    apartments: elementsList,
+    page: currentPage,
+    totalPages,
+    total: totalElements
   });
 };

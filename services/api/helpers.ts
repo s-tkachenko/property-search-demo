@@ -6,4 +6,12 @@ export const getRouterParamStringValue = (val: string | string[] | undefined): s
   return typeof val === 'string' ? val : '';
 };
 
+export const getRouterParamIntValue = (val: string | string[] | undefined): number | null => {
+  if (typeof val === 'string') {
+    const num = Number.parseInt(val);
+    return Number.isSafeInteger(num) ? num : null;
+  }
+  return null;
+};
+
 export const fetcher = (input: RequestInfo) => fetch(input).then((res) => res.json());

@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0 0 0;
+}
+
+.container button {
+  margin: 0 2px;
+  border: 0;
+}
+
+.container button:enabled {
+  cursor: pointer;
+}
+
+.container button:disabled {
+  color: #5f6c78;
+  background: #eaeaea;
+  box-shadow: none;
+}

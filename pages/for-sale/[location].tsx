@@ -7,17 +7,24 @@ import ContentGrid from '../../components/ContentGrid/ContentGrid';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import PageHead from '../../components/PageHead/PageHead';
+import Pagination from '../../components/Pagination/Pagination';
+import { DEFAULT } from '../../constants/common';
 import MSG from '../../constants/messages';
-import { API } from '../../constants/routes';
-import { CLIENT } from '../../constants/routes';
+import { API, CLIENT } from '../../constants/routes';
 import TITLE from '../../constants/titles';
-import { fetcher, getRouterParamStringValue } from '../../services/api/helpers';
+import {
+  fetcher,
+  getRouterParamIntValue,
+  getRouterParamStringValue
+} from '../../services/api/helpers';
 import { Apartment } from '../../types/apartment';
 
 export default function ForSale() {
   const router = useRouter();
   const location = getRouterParamStringValue(router?.query?.location);
-  const { data, error } = useSWR(API.LOCATION_SEARCH(location), fetcher);
+  const pageIndex = getRouterParamIntValue(router?.query?.page) || DEFAULT.PAGE_INDEX;
+
+  const { data, error } = useSWR(API.LOCATION_SEARCH(location, pageIndex), fetcher);
   const isNoResults = !Array.isArray(data?.apartments) || data.apartments.length === 0;
 
   if (error) return <ErrorMessage message={MSG.ERROR_FAIL_TO_LOAD} />;
@@ -36,6 +43,11 @@ export default function ForSale() {
           </Link>
         ))}
       </ContentGrid>
+      <Pagination
+        currentPage={data.page}
+        totalPages={data.totalPages}
+        baseUrl={CLIENT.FIND_APARTMENTS_BY_QUERY(location)}
+      />
     </>
   );
 }
