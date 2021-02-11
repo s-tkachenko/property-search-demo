@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import useSWR from 'swr';
 
 import ApartmentsList from '../../components/ApartmentsList/ApartmentsList';
@@ -12,11 +13,18 @@ import {
   getRouterParamIntValue,
   getRouterParamStringValue
 } from '../../services/api/helpers';
+import { saveRecentSearchQuery } from '../../services/recent-searches';
 
 export default function ForSale() {
   const router = useRouter();
   const location = getRouterParamStringValue(router?.query?.location);
   const pageIndex = getRouterParamIntValue(router?.query?.page) || DEFAULT.PAGE_INDEX;
+
+  useEffect(() => {
+    if (location) {
+      saveRecentSearchQuery(location);
+    }
+  }, [location]);
 
   const { data, error } = useSWR(API.LOCATION_SEARCH(location, pageIndex), fetcher);
 

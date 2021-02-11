@@ -1,0 +1,36 @@
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+
+import { RECENT_SEARCHES } from '../../constants/captions';
+import { CLIENT } from '../../constants/routes';
+import { getRecentSearchList } from '../../services/recent-searches';
+import { RecentSearchItem } from '../../types/apartment';
+import styles from './RecentSearches.module.css';
+
+export default function RecentSearches() {
+  const [list, setList] = useState<RecentSearchItem[]>([]);
+
+  useEffect(() => {
+    setList(getRecentSearchList());
+  }, []);
+
+  return (
+    <div className={styles.container}>
+      <div className={styles.header}>{RECENT_SEARCHES.HEADER}</div>
+      {list.length > 0 ? (
+        <div className={styles.list}>
+          {list.map((item) => (
+            <Link href={CLIENT.FIND_APARTMENTS_BY_QUERY(item.value)} key={item.timestamp}>
+              <a>
+                {item.value}
+                <div className={styles.time}>{new Date(item.timestamp).toLocaleString()}</div>
+              </a>
+            </Link>
+          ))}
+        </div>
+      ) : (
+        <div className={styles.empty}>{RECENT_SEARCHES.NO_ITEMS}</div>
+      )}
+    </div>
+  );
+}

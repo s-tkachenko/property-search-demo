@@ -4,6 +4,11 @@ export const DEFAULT = {
   SEARCH_PLACEHOLDER: 'e.g. Liverpool'
 };
 
+export const RECENT_SEARCH = {
+  LOCAL_STORAGE_KEY_NAME: 'recent-searches',
+  MAX_ITEMS: 5
+};
+
 export const SEARCH_PROMPTS = [
   'Belfast',
   'Birmingham',

@@ -8,3 +8,8 @@ export type Apartment = {
   phone: string;
   agent: string;
 };
+
+export type RecentSearchItem = {
+  value: string;
+  timestamp: number;
+};
