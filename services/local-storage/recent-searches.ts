@@ -1,8 +1,8 @@
-import { RECENT_SEARCH } from '../constants/common';
-import { RecentSearchItem } from '../types/apartment';
+import { RECENT_SEARCH } from '../../constants/common';
+import { RecentSearchLocation } from '../../types/apartments';
 
 export const saveRecentSearchQuery = (value: string): void => {
-  const list: RecentSearchItem[] = getRecentSearchList();
+  const list: RecentSearchLocation[] = getRecentSearchList();
   list.unshift({
     value: value,
     timestamp: Date.now()
@@ -11,7 +11,7 @@ export const saveRecentSearchQuery = (value: string): void => {
   localStorage.setItem(RECENT_SEARCH.LOCAL_STORAGE_KEY_NAME, JSON.stringify(recent));
 };
 
-export const getRecentSearchList = (): RecentSearchItem[] => {
+export const getRecentSearchList = (): RecentSearchLocation[] => {
   const rawList = localStorage.getItem(RECENT_SEARCH.LOCAL_STORAGE_KEY_NAME);
   try {
     const list = rawList ? JSON.parse(rawList) : [];

@@ -1,5 +1,5 @@
 import { API } from '../../constants/routes';
-import { Apartment } from '../../types/apartment';
+import { Apartment } from '../../types/apartments';
 
 export async function getAllApartmentIds() {
   try {

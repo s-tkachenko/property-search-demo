@@ -1,14 +1,33 @@
 import '../styles/globals.css';
 
 import { AppProps } from 'next/app';
+import { useEffect, useReducer } from 'react';
 
 import Layout from '../components/Layout/Layout';
+import FavoritesContext from '../context/favorites';
+import favoritesReducer, { actionTypes, favoritesInitialState } from '../reducers/favorites';
+import { getFavorites } from '../services/local-storage/favorites';
 
 function App({ Component, pageProps }: AppProps) {
+  const [favorites, favoritesDispatch] = useReducer(favoritesReducer, favoritesInitialState);
+
+  useEffect(() => {
+    const apartments = getFavorites();
+
+    favoritesDispatch({
+      type: actionTypes.POPULATE_FAVORITES,
+      payload: {
+        apartments
+      }
+    });
+  }, []);
+
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <FavoritesContext.Provider value={{ favorites, favoritesDispatch }}>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </FavoritesContext.Provider>
   );
 }
 

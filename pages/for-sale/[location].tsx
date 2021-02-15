@@ -13,7 +13,7 @@ import {
   getRouterParamIntValue,
   getRouterParamStringValue
 } from '../../services/api/helpers';
-import { saveRecentSearchQuery } from '../../services/recent-searches';
+import { saveRecentSearchQuery } from '../../services/local-storage/recent-searches';
 
 export default function ForSale() {
   const router = useRouter();

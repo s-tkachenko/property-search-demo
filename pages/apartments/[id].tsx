@@ -3,7 +3,7 @@ import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import PageHead from '../../components/PageHead/PageHead';
 import TITLE from '../../constants/titles';
 import { getAllApartmentIds, getApartmentById } from '../../services/api/apartments';
-import { Apartment } from '../../types/apartment';
+import { Apartment } from '../../types/apartments';
 
 type Props = {
   apartment: Apartment;

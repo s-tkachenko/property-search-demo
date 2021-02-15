@@ -3,12 +3,12 @@ import { useEffect, useState } from 'react';
 
 import { RECENT_SEARCHES } from '../../constants/captions';
 import { CLIENT } from '../../constants/routes';
-import { getRecentSearchList } from '../../services/recent-searches';
-import { RecentSearchItem } from '../../types/apartment';
+import { getRecentSearchList } from '../../services/local-storage/recent-searches';
+import { RecentSearchLocation } from '../../types/apartments';
 import styles from './RecentSearches.module.css';
 
 export default function RecentSearches() {
-  const [list, setList] = useState<RecentSearchItem[]>([]);
+  const [list, setList] = useState<RecentSearchLocation[]>([]);
 
   useEffect(() => {
     setList(getRecentSearchList());

@@ -9,7 +9,7 @@ export type Apartment = {
   agent: string;
 };
 
-export type RecentSearchItem = {
+export type RecentSearchLocation = {
   value: string;
   timestamp: number;
 };

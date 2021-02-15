@@ -4,6 +4,10 @@ export const DEFAULT = {
   SEARCH_PLACEHOLDER: 'e.g. Liverpool'
 };
 
+export const FAVORITES = {
+  LOCAL_STORAGE_KEY_NAME: 'user-favorites'
+};
+
 export const RECENT_SEARCH = {
   LOCAL_STORAGE_KEY_NAME: 'recent-searches',
   MAX_ITEMS: 5

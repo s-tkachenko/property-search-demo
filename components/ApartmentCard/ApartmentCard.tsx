@@ -1,4 +1,4 @@
-import { Apartment } from '../../types/apartment';
+import { Apartment } from '../../types/apartments';
 import ApartmentDescription from '../ApartmentDescription/ApartmentDescription';
 import ButtonAddToFavorites from '../ButtonAddToFavorites/ButtonAddToFavorites';
 import styles from './ApartmentCard.module.css';

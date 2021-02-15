@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import MSG from '../../constants/messages';
 import { CLIENT } from '../../constants/routes';
-import { Apartment } from '../../types/apartment';
+import { Apartment } from '../../types/apartments';
 import ApartmentCard from '../ApartmentCard/ApartmentCard';
 import ContentGrid from '../ContentGrid/ContentGrid';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
