@@ -11,7 +11,8 @@ type Props = {
 export default function ButtonAddToFavorites({ apartment }: Props) {
   const { favoritesDispatch } = useContext(FavoritesContext);
 
-  const handleClick = () => {
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
     favoritesDispatch({
       type: actionTypes.ADD_FAVORITE,
       payload: {

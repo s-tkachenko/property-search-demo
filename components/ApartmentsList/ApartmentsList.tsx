@@ -1,10 +1,7 @@
-import Link from 'next/link';
-
 import MSG from '../../constants/messages';
 import { CLIENT } from '../../constants/routes';
 import { Apartment } from '../../types/apartments';
-import ApartmentCard from '../ApartmentCard/ApartmentCard';
-import ContentGrid from '../ContentGrid/ContentGrid';
+import ApartmentsGrid from '../ApartmentsGrid/ApartmentsGrid';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import Pagination from '../Pagination/Pagination';
@@ -34,15 +31,7 @@ export default function ApartmentsList({ error, data, location }: Props) {
 
   return (
     <>
-      <ContentGrid>
-        {data.apartments.map((apartment: Apartment) => (
-          <Link href={CLIENT.APARTMENT_BY_ID(apartment.id)} key={apartment.id}>
-            <a>
-              <ApartmentCard apartment={apartment} />
-            </a>
-          </Link>
-        ))}
-      </ContentGrid>
+      <ApartmentsGrid apartments={data.apartments} />
       <Pagination
         currentPage={data.page}
         totalPages={data.totalPages}
