@@ -10,3 +10,7 @@ export const getFavorites = (): Apartment[] => {
     return [];
   }
 };
+
+export const setFavorites = (apartments: Apartment[]): void => {
+  localStorage.setItem(FAVORITES.LOCAL_STORAGE_KEY_NAME, JSON.stringify(apartments));
+};

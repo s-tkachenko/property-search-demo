@@ -5,7 +5,7 @@ export const DEFAULT = {
 };
 
 export const FAVORITES = {
-  LOCAL_STORAGE_KEY_NAME: 'user-favorites'
+  LOCAL_STORAGE_KEY_NAME: 'favorite-apartments'
 };
 
 export const RECENT_SEARCH = {

@@ -1,3 +1,9 @@
+import { useContext } from 'react';
+
+import FavoritesContext from '../context/favorites';
+
 export default function Favorites() {
-  return <h2>favorites</h2>;
+  const { favorites } = useContext(FavoritesContext);
+
+  return <h2>favorites {JSON.stringify(favorites)}</h2>;
 }

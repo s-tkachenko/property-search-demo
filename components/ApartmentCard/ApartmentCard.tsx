@@ -13,7 +13,7 @@ export default function ApartmentCard({ apartment }: Props) {
       <div className={styles.image}>
         <img src={apartment.imageUrl} alt={apartment.street} />
         <div className={styles.favoritesButton}>
-          <ButtonAddToFavorites />
+          <ButtonAddToFavorites apartment={apartment} />
         </div>
       </div>
       <div className={styles.description}>

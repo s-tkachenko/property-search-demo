@@ -1,20 +1,25 @@
 import { FavoritesAction, FavoritesState } from '../types/reducers';
 
-export const actionTypes = {
-  POPULATE_FAVORITES: 'POPULATE_FAVORITES',
-  ADD_FAVORITE: 'ADD_FAVORITE',
-  REMOVE_FAVORITE: 'REMOVE_FAVORITE'
-};
+export enum actionTypes {
+  POPULATE_FAVORITES = 'POPULATE_FAVORITES',
+  ADD_FAVORITE = 'ADD_FAVORITE',
+  REMOVE_FAVORITE = 'REMOVE_FAVORITE'
+}
 
-export const favoritesInitialState: FavoritesState = { apartments: [], isLoading: false };
+export const initialState: FavoritesState = { apartments: [] };
 
 const favoritesReducer = (state: FavoritesState, action: FavoritesAction): FavoritesState => {
   switch (action.type) {
     case actionTypes.POPULATE_FAVORITES:
-      return state;
+      return {
+        ...state,
+        apartments: action.payload?.apartments || []
+      };
     case actionTypes.ADD_FAVORITE:
-      console.log('add apartment', action.payload?.apartments);
-      return state;
+      return {
+        ...state,
+        apartments: [...state.apartments, action.payload?.apartment]
+      };
     case actionTypes.REMOVE_FAVORITE:
     default:
       return state;
