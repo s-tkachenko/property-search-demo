@@ -17,6 +17,7 @@
 }
 
 .description {
+  position: relative;
   flex-grow: 2;
   margin: 1.5rem 0 0 1.5rem;
 }
@@ -26,3 +27,11 @@
   padding-top: 1.5rem;
   border-top: 1px solid #eaeaea;
 } 
+
+.favoritesButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding-left: 30px;
+  background: linear-gradient(270deg, rgb(255, 255, 255) 70%, rgba(255,255,255,0) 100%);
+}

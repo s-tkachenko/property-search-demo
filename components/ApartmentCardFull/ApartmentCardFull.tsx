@@ -1,6 +1,7 @@
 import { Apartment } from '../../types/apartments';
 import AgentContactInfo from '../AgentContactInfo/AgentContactInfo';
 import ApartmentDescription from '../ApartmentDescription/ApartmentDescription';
+import ButtonAddToFavorites from '../ButtonAddToFavorites/ButtonAddToFavorites';
 import styles from './ApartmentCardFull.module.css';
 
 type Props = {
@@ -14,6 +15,9 @@ export default function ApartmentCardFull({ apartment }: Props) {
         <img src={apartment.imageUrl} alt={apartment.street} />
       </div>
       <div className={styles.description}>
+        <div className={styles.favoritesButton}>
+          <ButtonAddToFavorites apartment={apartment} />
+        </div>
         <ApartmentDescription
           street={apartment.street}
           city={apartment.city}

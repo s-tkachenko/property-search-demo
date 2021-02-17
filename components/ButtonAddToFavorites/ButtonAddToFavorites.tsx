@@ -9,17 +9,21 @@ type Props = {
   apartment: Apartment;
 };
 export default function ButtonAddToFavorites({ apartment }: Props) {
-  const { favoritesDispatch } = useContext(FavoritesContext);
+  const { favorites, favoritesDispatch } = useContext(FavoritesContext);
+  const { apartments } = favorites;
+  const isFavorite = apartments.some((item) => item.id === apartment.id);
 
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
     favoritesDispatch({
-      type: actionTypes.ADD_FAVORITE,
+      type: isFavorite ? actionTypes.REMOVE_FAVORITE : actionTypes.ADD_FAVORITE,
       payload: {
         apartment
       }
     });
   };
 
-  return <div className={styles.button} onClick={handleClick} />;
+  return (
+    <div className={`${styles.button} ${isFavorite && styles.favorite}`} onClick={handleClick} />
+  );
 }
