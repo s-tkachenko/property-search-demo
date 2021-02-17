@@ -8,6 +8,7 @@ import styles from './ButtonAddToFavorites.module.css';
 type Props = {
   apartment: Apartment;
 };
+
 export default function ButtonAddToFavorites({ apartment }: Props) {
   const { favorites, favoritesDispatch } = useContext(FavoritesContext);
   const { apartments } = favorites;

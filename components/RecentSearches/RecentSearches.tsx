@@ -14,6 +14,8 @@ export default function RecentSearches() {
     setList(getRecentSearchList());
   }, []);
 
+  const getTime = (timestamp: number) => new Date(timestamp).toLocaleString();
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>{RECENT_SEARCHES.HEADER}</div>
@@ -23,7 +25,7 @@ export default function RecentSearches() {
             <Link href={CLIENT.FIND_APARTMENTS_BY_QUERY(item.value)} key={item.timestamp}>
               <a>
                 {item.value}
-                <div className={styles.time}>{new Date(item.timestamp).toLocaleString()}</div>
+                <div className={styles.time}>{getTime(item.timestamp)}</div>
               </a>
             </Link>
           ))}

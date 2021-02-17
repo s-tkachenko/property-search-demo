@@ -8,6 +8,7 @@ export const API = {
 };
 
 export const CLIENT = {
+  HOME: '/',
   APARTMENT_BY_ID: (id: string): string => `/apartments/${id}`,
   FIND_APARTMENTS_BY_QUERY: (query: string): string => `/for-sale/${query}`,
   FAVORITES: '/favorites'
