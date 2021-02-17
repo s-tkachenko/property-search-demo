@@ -1,11 +1,11 @@
 import styles from './ApartmentDescription.module.css';
 
-type Props = {
+interface Props {
   street: string;
   city: string;
   bedroom: number;
   price: string;
-};
+}
 
 export default function ApartmentDescription({ street, city, bedroom, price }: Props) {
   return (

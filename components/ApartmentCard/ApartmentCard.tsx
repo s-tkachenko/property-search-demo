@@ -1,11 +1,11 @@
-import { Apartment } from '../../types/apartments';
+import type { Apartment } from '../../types/apartments';
 import ApartmentDescription from '../ApartmentDescription/ApartmentDescription';
 import ButtonAddToFavorites from '../ButtonAddToFavorites/ButtonAddToFavorites';
 import styles from './ApartmentCard.module.css';
 
-type Props = {
+interface Props {
   apartment: Apartment;
-};
+}
 
 export default function ApartmentCard({ apartment }: Props) {
   return (

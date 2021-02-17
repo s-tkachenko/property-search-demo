@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { STATUS_CODE } from '../../../constants/common';
 import { DEFAULT } from '../../../constants/common';
@@ -10,13 +10,13 @@ import {
 } from '../../../services/api/helpers';
 import data from '../mock-data.json';
 
-export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
+export default (req: NextApiRequest, res: NextApiResponse): void => {
   const {
     query: { location, page }
   } = req;
   const currentPage = getRouterParamIntValue(page) || DEFAULT.PAGE_INDEX;
   const queryLocation = getRouterParamStringValue(location).toLowerCase();
-  const filtered = data.filter((el) => el?.city?.toLowerCase().includes(queryLocation));
+  const filtered = data.filter((el) => el.city.toLowerCase().includes(queryLocation));
   const apartments = filtered.map((el) => ({
     id: el.id,
     city: el.city,

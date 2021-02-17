@@ -5,15 +5,15 @@ import { CLIENT } from '../../constants/routes';
 import SearchForm from '../SearchForm/SearchForm';
 import styles from './SearchBar.module.css';
 
-type Props = {
+interface Props {
   value?: string;
-};
+}
 
 export default function SearchBar({ value }: Props) {
   const router = useRouter();
 
   const handleSearchResults = (query: string) => {
-    router.push(CLIENT.FIND_APARTMENTS_BY_QUERY(query));
+    void router.push(CLIENT.FIND_APARTMENTS_BY_QUERY(query));
   };
 
   return (

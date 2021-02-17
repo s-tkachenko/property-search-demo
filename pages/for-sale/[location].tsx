@@ -14,11 +14,12 @@ import {
   getRouterParamStringValue
 } from '../../services/api/helpers';
 import { saveRecentSearchQuery } from '../../services/local-storage/recent-searches';
+import { ServerResponseApartmentList } from '../../types/apartments';
 
 export default function ForSale() {
   const router = useRouter();
-  const location = getRouterParamStringValue(router?.query?.location);
-  const pageIndex = getRouterParamIntValue(router?.query?.page) || DEFAULT.PAGE_INDEX;
+  const location = getRouterParamStringValue(router.query.location);
+  const pageIndex = getRouterParamIntValue(router.query.page) || DEFAULT.PAGE_INDEX;
 
   useEffect(() => {
     if (location) {
@@ -26,7 +27,10 @@ export default function ForSale() {
     }
   }, [location]);
 
-  const { data, error } = useSWR(API.LOCATION_SEARCH(location, pageIndex), fetcher);
+  const { data, error } = useSWR<ServerResponseApartmentList, Error>(
+    API.LOCATION_SEARCH(location, pageIndex),
+    fetcher
+  );
 
   return (
     <>

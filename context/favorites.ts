@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { initialState } from '../reducers/favorites';
-import { FavoritesAction, FavoritesState } from '../types/reducers';
+import type { FavoritesAction, FavoritesState } from '../types/reducers';
 
 const FavoritesContext = React.createContext<{
   favorites: FavoritesState;

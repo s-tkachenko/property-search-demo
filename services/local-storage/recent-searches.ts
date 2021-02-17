@@ -1,5 +1,5 @@
 import { RECENT_SEARCH } from '../../constants/common';
-import { RecentSearchLocation } from '../../types/apartments';
+import type { RecentSearchLocation } from '../../types/apartments';
 
 export const saveRecentSearchQuery = (value: string): void => {
   const list: RecentSearchLocation[] = getRecentSearchList();
@@ -14,8 +14,8 @@ export const saveRecentSearchQuery = (value: string): void => {
 export const getRecentSearchList = (): RecentSearchLocation[] => {
   const rawList = localStorage.getItem(RECENT_SEARCH.LOCAL_STORAGE_KEY_NAME);
   try {
-    const list = rawList ? JSON.parse(rawList) : [];
-    return Array.isArray(list) ? list : [];
+    const list: unknown = rawList ? JSON.parse(rawList) : [];
+    return (Array.isArray(list) ? list : []) as RecentSearchLocation[];
   } catch (e) {
     return [];
   }

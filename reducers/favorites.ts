@@ -1,4 +1,4 @@
-import { FavoritesAction, FavoritesState } from '../types/reducers';
+import type { FavoritesAction, FavoritesState } from '../types/reducers';
 
 export enum actionTypes {
   POPULATE_FAVORITES = 'POPULATE_FAVORITES',
@@ -13,21 +13,22 @@ const favoritesReducer = (state: FavoritesState, action: FavoritesAction): Favor
     case actionTypes.POPULATE_FAVORITES:
       return {
         ...state,
-        apartments: action.payload?.apartments || []
+        apartments: action.payload.apartments || []
       };
     case actionTypes.ADD_FAVORITE: {
-      const idToAdd = action.payload?.apartment?.id;
+      const apartmentToAdd = action.payload.apartment;
+      const idToAdd = apartmentToAdd?.id;
       const isAlreadyExist = state.apartments.some((item) => item.id === idToAdd);
-      if (isAlreadyExist) {
+      if (isAlreadyExist || !apartmentToAdd) {
         return state;
       }
       return {
         ...state,
-        apartments: [...state.apartments, action.payload?.apartment]
+        apartments: [...state.apartments, apartmentToAdd]
       };
     }
     case actionTypes.REMOVE_FAVORITE: {
-      const idToDelete = action.payload?.apartment?.id;
+      const idToDelete = action.payload.apartment?.id;
       return {
         ...state,
         apartments: state.apartments.filter((item) => item.id !== idToDelete)

@@ -1,8 +1,8 @@
 import Head from 'next/head';
 
-type Props = {
+interface Props {
   title: string;
-};
+}
 
 export default function PageHead({ title }: Props) {
   return (

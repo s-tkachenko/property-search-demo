@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { RECENT_SEARCHES } from '../../constants/captions';
 import { CLIENT } from '../../constants/routes';
 import { getRecentSearchList } from '../../services/local-storage/recent-searches';
-import { RecentSearchLocation } from '../../types/apartments';
+import type { RecentSearchLocation } from '../../types/apartments';
 import styles from './RecentSearches.module.css';
 
 export default function RecentSearches() {

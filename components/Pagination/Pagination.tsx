@@ -2,11 +2,11 @@ import { useRouter } from 'next/router';
 
 import styles from './Pagination.module.css';
 
-type Props = {
+interface Props {
   currentPage: number;
   totalPages: number;
   baseUrl: string;
-};
+}
 
 function getPaginationRange(current: number, total: number, range = 6, min = 1) {
   const length = total < range ? total : range;
@@ -22,20 +22,20 @@ export default function Pagination({ currentPage, totalPages, baseUrl }: Props) 
   const router = useRouter();
   const indexes = getPaginationRange(currentPage, totalPages);
 
-  const redirectToPage = (page: number | string) =>
+  const redirectToPage = async (page: number | string) =>
     router.push({
       pathname: baseUrl,
       query: { page }
     });
 
-  const handleOpenPrevious = () => redirectToPage(currentPage - 1);
+  const handleOpenPrevious = async () => redirectToPage(currentPage - 1);
 
-  const handleOpenNext = () => redirectToPage(currentPage + 1);
+  const handleOpenNext = async () => redirectToPage(currentPage + 1);
 
   const handleOpenByIndex = (e: React.MouseEvent) => {
-    const target = e?.target as HTMLTextAreaElement;
-    const pageIndex = target?.getAttribute('data-index') || '';
-    redirectToPage(pageIndex);
+    const target = e.target as HTMLTextAreaElement;
+    const pageIndex = target.getAttribute('data-index') || '';
+    void redirectToPage(pageIndex);
   };
 
   const isPreviousDisabled = currentPage === 1;

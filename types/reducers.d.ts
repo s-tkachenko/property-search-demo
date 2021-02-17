@@ -1,11 +1,13 @@
-export type FavoritesState = {
-  apartments: Apartment[];
-};
+import type { Apartment } from './apartments';
 
-export type FavoritesAction = { 
-  type: string;
-  payload: {
-    apartments?: Apartment[],
-    apartment?: Apartment
-  }
- };
+export interface FavoritesState {
+    apartments: Apartment[];
+}
+
+export interface FavoritesAction { 
+    type: string;
+    payload: {
+        apartments?: Apartment[];
+        apartment?: Apartment;
+    };
+}

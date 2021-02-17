@@ -3,12 +3,12 @@ import { useState } from 'react';
 import { DEFAULT } from '../../constants/common';
 import styles from './SearchForm.module.css';
 
-type Props = {
+interface Props {
   onSubmit: (query: string) => void;
   placeholder: string;
   value?: string;
   promptOptions: string[];
-};
+}
 
 export default function SearchForm({ onSubmit, placeholder, value = '', promptOptions }: Props) {
   const [searchQuery, setSearchQuery] = useState<string>(value);
@@ -41,9 +41,9 @@ export default function SearchForm({ onSubmit, placeholder, value = '', promptOp
     submitQuery(searchQuery.trim());
   };
 
-  const handleClickPrompt = (e: React.MouseEvent | React.KeyboardEvent) => {
-    const target = e?.target as HTMLTextAreaElement;
-    submitQuery(target?.getAttribute('data-value'));
+  const handleClickPrompt = (e: React.KeyboardEvent | React.MouseEvent) => {
+    const target = e.target as HTMLTextAreaElement;
+    submitQuery(target.getAttribute('data-value'));
   };
 
   const handlePressEnterPrompt = (e: React.KeyboardEvent) => {
@@ -62,7 +62,7 @@ export default function SearchForm({ onSubmit, placeholder, value = '', promptOp
         autoComplete="off"
         placeholder={placeholder}></input>
       <button className={styles.submit} type="submit" tabIndex={-1} />
-      {prompts?.length > 0 && (
+      {prompts.length > 0 && (
         <ul className={styles.prompt}>
           {prompts.map((query) => (
             <li

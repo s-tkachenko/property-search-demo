@@ -1,10 +1,10 @@
 import { AGENT_CONTACT_INFO } from '../../constants/captions';
 import styles from './AgentContactInfo.module.css';
 
-type Props = {
+interface Props {
   name: string;
   tel: string;
-};
+}
 
 export default function AgentContactInfo({ name, tel }: Props) {
   return (

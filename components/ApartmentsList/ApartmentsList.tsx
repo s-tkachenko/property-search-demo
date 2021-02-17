@@ -1,16 +1,16 @@
 import MSG from '../../constants/messages';
 import { CLIENT } from '../../constants/routes';
-import { ServerResponseApartmentList } from '../../types/apartments';
+import type { ServerResponseApartmentList } from '../../types/apartments';
 import ApartmentsGrid from '../ApartmentsGrid/ApartmentsGrid';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import Pagination from '../Pagination/Pagination';
 
-type Props = {
-  error: Error;
-  data: ServerResponseApartmentList | undefined;
+interface Props {
+  error?: Error;
+  data?: ServerResponseApartmentList;
   location: string;
-};
+}
 
 export default function ApartmentsList({ error, data, location }: Props) {
   const isNoResults = !Array.isArray(data?.apartments) || data?.apartments.length === 0;

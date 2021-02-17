@@ -1,12 +1,12 @@
-import { Apartment } from '../../types/apartments';
+import type { Apartment } from '../../types/apartments';
 import AgentContactInfo from '../AgentContactInfo/AgentContactInfo';
 import ApartmentDescription from '../ApartmentDescription/ApartmentDescription';
 import ButtonAddToFavorites from '../ButtonAddToFavorites/ButtonAddToFavorites';
 import styles from './ApartmentCardFull.module.css';
 
-type Props = {
+interface Props {
   apartment: Apartment;
-};
+}
 
 export default function ApartmentCardFull({ apartment }: Props) {
   return (

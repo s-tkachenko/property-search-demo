@@ -3,11 +3,11 @@ import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import PageHead from '../../components/PageHead/PageHead';
 import TITLE from '../../constants/titles';
 import { getAllApartmentIds, getApartmentById } from '../../services/api/apartments';
-import { Apartment } from '../../types/apartments';
+import type { Apartment } from '../../types/apartments';
 
-type Props = {
+interface Props {
   apartment: Apartment;
-};
+}
 
 export default function ApartmentDetails({ apartment }: Props) {
   return (
@@ -24,11 +24,11 @@ export async function getStaticPaths() {
   return { paths, fallback: false };
 }
 
-type StaticProps = {
+interface StaticProps {
   params: {
     id: string;
   };
-};
+}
 
 export async function getStaticProps({ params }: StaticProps) {
   const apartment = await getApartmentById(params.id);
