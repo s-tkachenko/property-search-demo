@@ -1,7 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
 import { getFullPrice, getImageUrl } from '../../../services/api/helpers';
-import { fakeDelay } from '../../../services/utils';
 import data from '../mock-data.json';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
@@ -19,8 +18,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         imageUrl: getImageUrl(apartmentData.image)
       }
     : null;
-
-  await fakeDelay();
 
   res.statusCode = 200;
   res.json({

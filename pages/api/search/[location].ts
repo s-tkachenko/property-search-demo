@@ -6,7 +6,6 @@ import {
   getRouterParamIntValue,
   getRouterParamStringValue
 } from '../../../services/api/helpers';
-import { fakeDelay } from '../../../services/utils';
 import data from '../mock-data.json';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
@@ -35,8 +34,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const paginationStart = limitPerPage * (currentPage - 1);
   const paginationEnd = paginationStart + limitPerPage;
   const elementsList = apartments.slice(paginationStart, paginationEnd);
-
-  await fakeDelay();
 
   res.statusCode = 200;
   res.json({
