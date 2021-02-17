@@ -1,3 +1,5 @@
+import { ServerResponseApartmentList } from '../../types/apartments';
+
 export const getFullPrice = (price: number): string => `£${price},000`;
 
 export const getImageUrl = (imageId: number): string => `/mock-images/img${imageId}.jpg`;
@@ -14,4 +16,5 @@ export const getRouterParamIntValue = (val: string | string[] | undefined): numb
   return null;
 };
 
-export const fetcher = (input: RequestInfo) => fetch(input).then((res) => res.json());
+export const fetcher = (input: RequestInfo): Promise<ServerResponseApartmentList> =>
+  fetch(input).then((res) => res.json());

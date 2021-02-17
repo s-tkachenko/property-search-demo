@@ -8,7 +8,7 @@ import {
 } from '../../../services/api/helpers';
 import data from '../mock-data.json';
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   const DEFAULT = {
     PAGE: 1,
     LIMIT: 10

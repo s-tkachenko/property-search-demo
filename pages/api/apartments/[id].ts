@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { getFullPrice, getImageUrl } from '../../../services/api/helpers';
 import data from '../mock-data.json';
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   const {
     query: { id }
   } = req;

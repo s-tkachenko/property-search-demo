@@ -1,7 +1,7 @@
 import { API } from '../../constants/routes';
-import { Apartment } from '../../types/apartments';
+import { Apartment, ApartmentId } from '../../types/apartments';
 
-export async function getAllApartmentIds() {
+export async function getAllApartmentIds(): Promise<ApartmentId[]> {
   try {
     const res = await fetch(API.ALL_APARTMENTS_IDS);
     const data = await res.json();

@@ -20,7 +20,7 @@
       {
         "files": ["*.ts"],
         "rules": {
-          "@typescript-eslint/explicit-function-return-type": ["off"] // TODO turn on
+          "@typescript-eslint/explicit-function-return-type": ["error"]
         }
       }
     ]

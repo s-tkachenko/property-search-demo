@@ -13,3 +13,13 @@ export type RecentSearchLocation = {
   value: string;
   timestamp: number;
 };
+
+export type ServerResponseApartmentList = {
+  apartments: Apartment[];
+  page: number;
+  totalPages: number;
+}
+
+export type ApartmentId = {
+  params: string;
+};
