@@ -1,6 +1,17 @@
 module.exports = {
-  roots: ['<rootDir>'],
+  preset: 'ts-jest',
+  testEnvironment: 'jsdom',
+  moduleFileExtensions: ['ts', 'tsx', 'js'],
+  moduleNameMapper: {
+    '\\.(css|less)$': '<rootDir>/__mocks__/styleMock.js'
+  },
+  globals: {
+    'ts-jest': {
+      tsconfig: 'tsconfig.jest.json'
+    }
+  },
   testMatch: ['**/__tests__/**/*.+(ts|tsx|js)', '**/?(*.)+(spec|test).+(ts|tsx|js)'],
+  testPathIgnorePatterns: ['./.next/', './node_modules/'],
   transform: {
     '^.+\\.(ts|tsx)$': 'ts-jest'
   },
