@@ -1,3 +1,4 @@
+import { FOOTER } from '../../constants/captions';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import styles from './Layout.module.css';
@@ -11,7 +12,7 @@ export default function Layout({ children }: Props) {
     <div className={styles.container}>
       <Header />
       <main className={styles.main}>{children}</main>
-      <Footer />
+      <Footer copyrightText={FOOTER.GENERAL_INFO} />
     </div>
   );
 }
