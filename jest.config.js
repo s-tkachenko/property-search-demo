@@ -33,5 +33,6 @@ module.exports = {
       statements: 90
     }
   },
-  coverageReporters: ['text']
+  coverageReporters: ['text'],
+  setupFilesAfterEnv: ['<rootDir>/setup-test-env.ts']
 };
