@@ -1,10 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-
 import Footer from './Footer';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<Footer />, div);
-  ReactDOM.unmountComponentAtNode(div);
+import { render, screen } from '@testing-library/react';
+
+it('renders with a copyright text', () => {
+  const testMessage = '© 2021';
+
+  render(<Footer copyrightText={testMessage} />);
+
+  expect(screen.queryByText(testMessage)).toBeInTheDocument();
 });
