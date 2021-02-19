@@ -1,7 +1,5 @@
 node_modules
 .next
 *.config.js
-*.test.ts
-*.test.tsx
 coverage
 __mocks__
