@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 
 import ApartmentDescription from './ApartmentDescription';
 
-test('renders without errors', () => {
+test('renders without crashing', () => {
   render(<ApartmentDescription street="4 Street" city="City" bedroom={5} price="$100" />);
 
   expect(screen.getByText('4 Street')).toBeInTheDocument();

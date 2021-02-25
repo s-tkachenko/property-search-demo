@@ -1,7 +1,7 @@
 .button {
   width: 40px;
   height: 40px;
-  background: #fc6c7d url('./images/icon-bookmark-dark.svg');
+  background-color: #fc6c7d;
   background-repeat: no-repeat;
   background-position: center;
   background-size: 35%;
@@ -13,6 +13,10 @@
 .button:hover {
   background-color: #ff7484;
   box-shadow: 0px 5px 13px -7px #fc6c7d;
+}
+
+.notFavorite {
+  background: url('./images/icon-bookmark-dark.svg');
 }
 
 .favorite {

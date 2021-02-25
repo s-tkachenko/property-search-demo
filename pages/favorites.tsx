@@ -5,7 +5,7 @@ import ErrorMessage from '../components/ErrorMessage/ErrorMessage';
 import PageHead from '../components/PageHead/PageHead';
 import MSG from '../constants/messages';
 import TITLE from '../constants/titles';
-import FavoritesContext from '../context/favorites';
+import FavoritesContext from '../context/FavoritesContext';
 
 export default function Favorites() {
   const { favorites } = useContext(FavoritesContext);

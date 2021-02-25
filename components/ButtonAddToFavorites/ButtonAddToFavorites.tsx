@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 
-import FavoritesContext from '../../context/favorites';
-import { actionTypes } from '../../reducers/favorites';
+import FavoritesContext from '../../context/FavoritesContext';
+import { actionTypes } from '../../reducers/favoritesReducer';
 import type { Apartment } from '../../types/apartments';
 import styles from './ButtonAddToFavorites.module.css';
 
@@ -26,8 +26,10 @@ export default function ButtonAddToFavorites({ apartment }: Props) {
 
   return (
     <div
-      className={`${styles.button} ${isFavorite ? styles.favorite : ''}`}
-      onClick={handleClick}
-    />
+      data-testid="add-to-favorites"
+      className={`${styles.button} ${isFavorite ? styles.favorite : styles.notFavorite}`}
+      onClick={handleClick}>
+      {isFavorite ? 'Favorite' : 'Not Favorite'}
+    </div>
   );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { initialState } from '../reducers/favorites';
+import { initialState } from '../reducers/favoritesReducer';
 import type { FavoritesAction, FavoritesState } from '../types/reducers';
 
 const FavoritesContext = React.createContext<{
