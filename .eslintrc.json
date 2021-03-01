@@ -59,7 +59,9 @@
       "globals": {
         "test": true,
         "expect": true,
-        "jest": true
+        "jest": true,
+        "localStorage": true,
+        "window": true
       }
     }
   ]
