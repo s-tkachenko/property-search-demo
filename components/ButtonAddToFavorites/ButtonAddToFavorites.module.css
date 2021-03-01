@@ -16,7 +16,7 @@
 }
 
 .notFavorite {
-  background: url('./images/icon-bookmark-dark.svg');
+  background-image: url('./images/icon-bookmark-dark.svg');
 }
 
 .favorite {

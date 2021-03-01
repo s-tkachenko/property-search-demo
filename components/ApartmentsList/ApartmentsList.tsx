@@ -1,3 +1,5 @@
+import { useRouter } from 'next/router';
+
 import MSG from '../../constants/messages';
 import { CLIENT } from '../../constants/routes';
 import type { ServerResponseApartmentList } from '../../types/apartments';
@@ -13,7 +15,15 @@ interface Props {
 }
 
 export default function ApartmentsList({ error, data, location }: Props) {
+  const router = useRouter();
+
   const isNoResults = !Array.isArray(data?.apartments) || data?.apartments.length === 0;
+
+  const handleRedirectToPage = async (page: number) =>
+    router.push({
+      pathname: CLIENT.FIND_APARTMENTS_BY_QUERY(location),
+      query: { page }
+    });
 
   if (error) {
     return <ErrorMessage message={MSG.ERROR_FAIL_TO_LOAD} />;
@@ -31,7 +41,7 @@ export default function ApartmentsList({ error, data, location }: Props) {
       <Pagination
         currentPage={data.page}
         totalPages={data.totalPages}
-        baseUrl={CLIENT.FIND_APARTMENTS_BY_QUERY(location)}
+        onClick={handleRedirectToPage}
       />
     </>
   );

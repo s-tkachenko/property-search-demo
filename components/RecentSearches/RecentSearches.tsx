@@ -1,19 +1,15 @@
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
 
 import { RECENT_SEARCHES } from '../../constants/captions';
 import { CLIENT } from '../../constants/routes';
-import { getRecentSearchList } from '../../services/local-storage/recent-searches';
 import type { RecentSearchLocation } from '../../types/apartments';
 import styles from './RecentSearches.module.css';
 
-export default function RecentSearches() {
-  const [list, setList] = useState<RecentSearchLocation[]>([]);
+type Props = {
+  list: RecentSearchLocation[];
+};
 
-  useEffect(() => {
-    setList(getRecentSearchList());
-  }, []);
-
+export default function RecentSearches({ list }: Props) {
   const getTime = (timestamp: number) => new Date(timestamp).toLocaleString();
 
   return (

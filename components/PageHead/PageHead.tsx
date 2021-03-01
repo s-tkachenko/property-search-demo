@@ -6,7 +6,7 @@ interface Props {
 
 export default function PageHead({ title }: Props) {
   return (
-    <Head>
+    <Head data-testid="test">
       <title>{title}</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>

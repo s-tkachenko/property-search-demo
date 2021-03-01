@@ -28,8 +28,7 @@ export default function ButtonAddToFavorites({ apartment }: Props) {
     <div
       data-testid="add-to-favorites"
       className={`${styles.button} ${isFavorite ? styles.favorite : styles.notFavorite}`}
-      onClick={handleClick}>
-      {isFavorite ? 'Favorite' : 'Not Favorite'}
-    </div>
+      onClick={handleClick}
+    />
   );
 }

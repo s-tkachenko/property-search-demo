@@ -1,4 +1,5 @@
 module.exports = {
   favorite: 'favorite',
-  notFavorite: 'notFavorite'
+  notFavorite: 'notFavorite',
+  content: 'content'
 };
