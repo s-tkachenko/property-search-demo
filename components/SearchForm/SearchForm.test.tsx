@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import SearchForm from './SearchForm';
@@ -48,6 +48,24 @@ test('should call the function after clicking on the prompt', () => {
   userEvent.click(promptNode);
 
   expect(onSubmit).toHaveBeenCalledWith('prompt2');
+});
 
-  screen.debug();
+test('should call the function after pressing enter button', () => {
+  const onSubmit = jest.fn();
+  render(
+    <SearchForm
+      onSubmit={onSubmit}
+      placeholder="Placeholder"
+      promptOptions={['prompt1', 'prompt2']}
+    />
+  );
+
+  const searchboxNode = screen.getByRole('searchbox');
+  userEvent.type(searchboxNode, 'pro');
+
+  const promptNode = screen.getByText('prompt2');
+  expect(promptNode).toBeInTheDocument();
+  fireEvent.keyDown(promptNode, { key: 'Enter', code: 'Enter' });
+
+  expect(onSubmit).toHaveBeenCalledWith('prompt2');
 });

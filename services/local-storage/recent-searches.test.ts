@@ -15,6 +15,22 @@ test('should get recent searches from localstorage', () => {
   expect(list).toEqual(data);
 });
 
+test('should successfully process broken recent searches from localstorage', () => {
+  Storage.prototype.getItem = jest.fn(() => '{test');
+  const list = getRecentSearchList();
+
+  expect(localStorage.getItem).toBeCalledWith('recent-searches');
+  expect(list).toEqual([]);
+});
+
+test('should successfully process old format data from localstorage', () => {
+  Storage.prototype.getItem = jest.fn(() => '{}');
+  const list = getRecentSearchList();
+
+  expect(localStorage.getItem).toBeCalledWith('recent-searches');
+  expect(list).toEqual([]);
+});
+
 test('should set recent searches to localstorage', () => {
   const data = [
     {
