@@ -24,7 +24,8 @@ module.exports = {
     '!<rootDir>/types/**/*',
     '!<rootDir>/*.config.js',
     '!<rootDir>/*.d.ts',
-    '!<rootDir>/pages/api/**/*'
+    '!<rootDir>/pages/api/**/*',
+    '!<rootDir>/.scannerwork/**/*'
   ],
   coverageThreshold: {
     global: {

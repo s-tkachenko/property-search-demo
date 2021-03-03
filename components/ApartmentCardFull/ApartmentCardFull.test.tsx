@@ -2,21 +2,19 @@ import { render, screen } from '@testing-library/react';
 
 import ApartmentCardFull from './ApartmentCardFull';
 
-jest.mock('../ApartmentDescription/ApartmentDescription', () => () => (
-  <div>MockApartmentDescription</div>
-));
+jest.mock('../ApartmentDescription/ApartmentDescription', () => () => <div>MockDescription</div>);
 jest.mock('../ButtonAddToFavorites/ButtonAddToFavorites', () => () => (
-  <div>MockButtonAddToFavorites</div>
+  <div>MockAddToFavorites</div>
 ));
 jest.mock('../AgentContactInfo/AgentContactInfo', () => () => <div>MockAgentContactInfo</div>);
 
-test('renders', () => {
+test('renders without crashing', () => {
   render(
     <ApartmentCardFull
       apartment={{
-        id: '23423',
-        city: 'City',
-        street: '5 Street',
+        id: '2',
+        city: 'Test City',
+        street: '6 Street',
         bedroom: 5,
         priceTag: '451000',
         imageUrl: '/img.jpg',
@@ -27,10 +25,10 @@ test('renders', () => {
   );
 
   const imageNode = screen.getByRole('img');
-  expect(imageNode).toHaveAttribute('alt', '5 Street');
+  expect(imageNode).toHaveAttribute('alt', '6 Street');
   expect(imageNode).toHaveAttribute('src', '/img.jpg');
 
-  expect(screen.getByText('MockApartmentDescription')).toBeInTheDocument();
-  expect(screen.getByText('MockButtonAddToFavorites')).toBeInTheDocument();
+  expect(screen.getByText('MockDescription')).toBeInTheDocument();
+  expect(screen.getByText('MockAddToFavorites')).toBeInTheDocument();
   expect(screen.getByText('MockAgentContactInfo')).toBeInTheDocument();
 });

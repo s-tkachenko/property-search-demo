@@ -1,7 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import { STATUS_CODE } from '../../../constants/common';
-import { DEFAULT } from '../../../constants/common';
+import { DEFAULT, STATUS_CODE } from '../../../constants/common';
 import {
   getFullPrice,
   getImageUrl,

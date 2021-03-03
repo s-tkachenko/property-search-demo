@@ -16,7 +16,7 @@ import {
 import { saveRecentSearchQuery } from '../../services/local-storage/recent-searches';
 import { ServerResponseApartmentList } from '../../types/apartments';
 
-export default function ForSale() {
+export default function ApartmentsListByLocation() {
   const router = useRouter();
   const location = getRouterParamStringValue(router.query.location);
   const pageIndex = getRouterParamIntValue(router.query.page) || DEFAULT.PAGE_INDEX;

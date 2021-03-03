@@ -22,18 +22,18 @@ export default function SearchForm({ onSubmit, placeholder, value = '', promptOp
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const searchQuery = e.target.value;
-    setSearchQuery(searchQuery);
+    const inputSearchQuery = e.target.value;
+    setSearchQuery(inputSearchQuery);
 
-    let prompts: string[] = [];
+    let searchPrompts: string[] = [];
 
-    if (searchQuery) {
-      const query = searchQuery.toLowerCase();
+    if (inputSearchQuery) {
+      const query = inputSearchQuery.toLowerCase();
       const filtered = promptOptions.filter((prompt) => prompt.toLowerCase().includes(query));
-      prompts = filtered.slice(0, DEFAULT.SEARCH_MAX_PROMPTS);
+      searchPrompts = filtered.slice(0, DEFAULT.SEARCH_MAX_PROMPTS);
     }
 
-    setPrompts(prompts);
+    setPrompts(searchPrompts);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
