@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/react';
 import { getPage } from 'next-page-tester';
 
-import * as helper from '../../services/api/apartments';
+import * as helper from '../../../services/api/apartments';
 
 test('renders apartment details page without crashing', async () => {
   const spy = jest.spyOn(helper, 'getApartmentById');
