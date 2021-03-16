@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
+import data from '../../../__mocks__/mock-data.json';
 import { DEFAULT, STATUS_CODE } from '../../../constants/common';
 import {
   getFullPrice,
@@ -7,7 +8,6 @@ import {
   getRouterParamIntValue,
   getRouterParamStringValue
 } from '../../../services/api/helpers';
-import data from '../mock-data.json';
 
 export default (req: NextApiRequest, res: NextApiResponse): void => {
   const {

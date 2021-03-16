@@ -1,32 +1,23 @@
-import { API } from '../../constants/routes';
-import type {
-  Apartment,
-  ApartmentId,
-  ServerResponseApartmentDetails,
-  ServerResponseApartmentIds
-} from '../../types/apartments';
+import data from '../../__mocks__/mock-data.json';
+import { getFullPrice, getImageUrl } from '../../services/api/helpers';
+import type { Apartment, ApartmentId } from '../../types/apartments';
 
-export async function getAllApartmentIds(): Promise<ApartmentId[]> {
-  try {
-    const res = await fetch(API.ALL_APARTMENTS_IDS);
-    const data = (await res.json()) as ServerResponseApartmentIds;
-    const ids = data?.ids || [];
-
-    return ids.map((id: string) => ({
-      params: { id }
-    }));
-  } catch (e) {
-    return [];
-  }
+export function getAllApartmentIds(): ApartmentId[] {
+  return data.map((el) => ({
+    params: {
+      id: el.id
+    }
+  }));
 }
 
-export async function getApartmentById(id: string): Promise<Apartment | null> {
-  try {
-    const res = await fetch(API.APARTMENT_BY_ID(id));
-    const data = (await res.json()) as ServerResponseApartmentDetails;
-
-    return data?.apartment || null;
-  } catch (e) {
-    return null;
-  }
+export function getApartmentById(id: string): Apartment | null {
+  const apartmentId = id.toLowerCase();
+  const apartmentData = data.find((item) => item.id.toLowerCase() === apartmentId);
+  return apartmentData
+    ? {
+        ...apartmentData,
+        priceTag: getFullPrice(apartmentData.price),
+        imageUrl: getImageUrl(apartmentData.image)
+      }
+    : null;
 }

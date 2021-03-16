@@ -18,8 +18,8 @@ export default function ApartmentDetails({ apartment }: Props) {
   );
 }
 
-export async function getStaticPaths() {
-  const paths = await getAllApartmentIds();
+export function getStaticPaths() {
+  const paths = getAllApartmentIds();
 
   return { paths, fallback: false };
 }
@@ -30,8 +30,8 @@ interface StaticProps {
   };
 }
 
-export async function getStaticProps({ params }: StaticProps) {
-  const apartment = await getApartmentById(params.id);
+export function getStaticProps({ params }: StaticProps) {
+  const apartment = getApartmentById(params.id);
 
   return { props: { apartment } };
 }
